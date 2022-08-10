@@ -1,0 +1,55 @@
+.table-component {
+
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+  tr {
+    width: 100%;
+
+    border-bottom: 1px solid #dddddd;
+
+    th, td {
+      padding: 12px 15px;
+    }
+
+    td {
+      transition: linear 0.3s
+    }
+
+    th {
+      font-weight: bold;
+      text-align: left;
+      background-color: #009879;
+      color: #ffffff;
+    }
+
+    &:hover {
+      td {
+        color: #009879;
+        transition: linear 0.3s
+      }
+    }
+
+  }
+
+  &:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  &:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  .centered {
+    text-align: center;
+  }
+}
