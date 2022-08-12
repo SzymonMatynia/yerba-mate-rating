@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import TableComponent from '../table-component/table.component';
 import YerbaData from '../../types/yerba-data.interface';
 import yerbaData from '../../data/yerba-data';
-import {InputComponent} from '../inputs/input-component/input.component';
+import InputComponent from '../inputs/input-component/input.component';
 import ButtonComponent from '../inputs/button-component/button.component';
 import styles from './yerba-table-component.module.scss';
 
