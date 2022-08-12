@@ -1,3 +1,24 @@
+# Yerba Mate Rating
+
+Project will be simple but useful yerbamate rating listing.
+
+##### Features:
+- Listing yerbamate `[DONE]`
+- Add yerbamate `[DONE]`
+- Sort by headers `[TODO]`
+- Filter `[TODO]`
+- Pagination `[TODO][OPTIONAL]`
+- Implement firebase to store yerbamate `[TODO]`
+
+Tech stack:
+- React.js with TypeScript
+- Google Linting
+- Firebase as DB
+
+Tests stack:
+- Cypress
+- Jest
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,6 +34,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run lint`
+
+Run eslint
+
+### `npm run lint-fix`
+
+Run eslint with --fix option
 
 ### `npm test`
 
