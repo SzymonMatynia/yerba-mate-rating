@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './button.module.scss';
 
 interface Props {
@@ -5,12 +6,12 @@ interface Props {
   onClick: () => void;
 }
 
-export const ButtonComponent = (props: Props) => {
-
-
+const ButtonComponent = ({text, onClick}: Props) => {
   return (
-    <button className={styles.button} onClick={props.onClick}>
-      {props.text}
+    <button type="button" className={styles.button} onClick={onClick}>
+      {text}
     </button>
-  )
-}
+  );
+};
+
+export default ButtonComponent;

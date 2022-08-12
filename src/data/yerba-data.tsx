@@ -1,6 +1,6 @@
 import YerbaData from '../types/yerba-data.interface';
 
-export const YERBA_DATA: YerbaData[] = [
+const yerbaData: YerbaData[] = [
   {
     id: 1,
     name: 'Yerba Verde Mate MAS IQ Tropical',
@@ -17,18 +17,20 @@ export const YERBA_DATA: YerbaData[] = [
     id: 3,
     name: 'Yerba Mate TARAGUI',
     like: false,
-    likesQuantity: 22
+    likesQuantity: 22,
   },
   {
     id: 4,
     name: 'Yerba Mate PAJARITO ELABORADA',
     like: false,
-    likesQuantity: 11
+    likesQuantity: 11,
   },
   {
     id: 5,
     name: 'Yerba Mate Amanda',
     like: false,
-    likesQuantity: 34
-  }
-]
+    likesQuantity: 34,
+  },
+];
+
+export default yerbaData;
