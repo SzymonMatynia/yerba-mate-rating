@@ -5,6 +5,7 @@ Project will be simple but useful yerbamate rating listing.
 ##### Features:
 - Listing yerbamate `[DONE]`
 - Add yerbamate `[DONE]`
+- Like / dislike db structure `[TODO]`
 - Sort by headers `[TODO]`
 - Filter `[TODO]`
 - Pagination `[TODO][OPTIONAL]`
