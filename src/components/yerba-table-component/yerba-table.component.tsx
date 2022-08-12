@@ -1,17 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import TableComponent from '../table-component/table.component';
-import YerbaData from '../../types/yerba-data.interface';
-import yerbaData from '../../data/yerba-data';
 import InputComponent from '../inputs/input-component/input.component';
 import ButtonComponent from '../inputs/button-component/button.component';
 import styles from './yerba-table-component.module.scss';
+import firestore from '../../firebase/firebase';
+import {collection, addDoc, getDocs, query} from '@firebase/firestore';
 
 const YerbaTableComponent = () => {
   const [newMate, setNewMate] = useState('');
-  const [data, setData] = useState<YerbaData[]>([]);
+  const [data, setData] = useState<any[]>([]);
+
+  const yerbaRef = collection(firestore, 'yerba');
+
+  const loadYerbas = async () => {
+    const q = query(yerbaRef);
+    getDocs(q).then((data) => {
+      if (data.docs.length < 1) {
+        return;
+      }
+      const mapped = data.docs.map((yerba) => {
+        return {
+          id: yerba.id,
+          ...yerba.data(),
+        };
+      });
+
+      setData(mapped);
+    });
+  };
 
   useEffect(() => {
-    setData(yerbaData);
+    loadYerbas().then();
   }, []);
 
   const onClickLike = (id: number) => {
@@ -33,19 +52,12 @@ const YerbaTableComponent = () => {
     setData(mappedData);
   };
 
-  const handleAddYerbamate = () => {
+  const handleAddYerbamate = async () => {
     if (newMate.length < 3) {
       return;
     }
-    setData([
-      ...data,
-      {
-        id: data.length + 1,
-        name: newMate,
-        like: false,
-        likesQuantity: 0,
-      },
-    ]);
+    await addDoc(yerbaRef, {name: newMate});
+    await loadYerbas();
     setNewMate('');
   };
 
@@ -70,7 +82,6 @@ const YerbaTableComponent = () => {
         <>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Like</th>
               <th>Likes quantity</th>
@@ -81,7 +92,6 @@ const YerbaTableComponent = () => {
             {
               data.map((yerba) => (
                 <tr key={yerba.id}>
-                  <td>{yerba.id}</td>
                   <td>{yerba.name}</td>
                   <td
                     className="clickable"

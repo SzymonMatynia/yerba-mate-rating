@@ -6,7 +6,7 @@ import YerbaTableComponent
 const App = () => {
   return (
     <div className="App">
-      <YerbaTableComponent />
+      <YerbaTableComponent/>
     </div>
   );
 };
