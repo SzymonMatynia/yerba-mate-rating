@@ -20,6 +20,11 @@ Tests stack:
 - Cypress
 - Jest
 
+# Installation
+1. install dependencies `yarn` or `npm install`
+2. create `.env` file of `.env.example`
+3. to start the app use `yarn start` or `npm run start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
