@@ -9,7 +9,8 @@ Project will be simple but useful yerbamate rating listing.
 - Sort by headers `[TODO]`
 - Filter `[TODO]`
 - Pagination `[TODO][OPTIONAL]`
-- Implement firebase to store yerbamate `[TODO]`
+- Implement firebase to store yerbamate `[DONE]`
+- Implement notifications `[TODO]`
 
 Tech stack:
 - React.js with TypeScript
