@@ -9,7 +9,7 @@ interface Props {
 const ButtonComponent = ({text, onClick}: Props) => {
   return (
     <button type="button" className={styles.button} onClick={onClick}>
-      {text}
+      <span className={styles.text}>{text}</span>
     </button>
   );
 };

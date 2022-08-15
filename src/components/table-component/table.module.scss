@@ -1,55 +1,72 @@
-.table-component {
-
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
-  tr {
+.table-component-wrapper {
+  position: relative;
+  .table-component  {
+    margin: 0;
+    padding: 0;
     width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background: white;
 
-    border-bottom: 1px solid #dddddd;
+    tr {
+      width: 100%;
 
-    th, td {
-      padding: 12px 15px;
-    }
+      border-bottom: 1px solid #dddddd;
 
-    td {
-      transition: linear 0.3s
-    }
+      th, td {
+        padding: 12px 15px;
+      }
 
-    th {
-      font-weight: bold;
-      text-align: left;
-      background-color: #009879;
-      color: #ffffff;
-    }
-
-    &:hover {
       td {
-        color: #009879;
         transition: linear 0.3s
       }
+
+      th {
+        font-weight: bold;
+        text-align: left;
+        background-color: #009879;
+        color: #ffffff;
+      }
+
+      &:hover {
+        background: #fafafa;
+        td {
+          color: #009879;
+          transition: linear 0.3s
+        }
+      }
+
     }
 
-  }
+    &:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
 
-  &:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
+    &:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
 
-  &:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
+    .clickable {
+      cursor: pointer;
+    }
 
-  .clickable {
-    cursor: pointer;
+    .centered {
+      text-align: center;
+    }
   }
-
-  .centered {
-    text-align: center;
+  .loader-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 41px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
   }
 }
+

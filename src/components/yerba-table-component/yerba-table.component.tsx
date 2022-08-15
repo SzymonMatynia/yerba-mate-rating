@@ -9,30 +9,38 @@ import {collection, addDoc, getDocs, query} from '@firebase/firestore';
 const YerbaTableComponent = () => {
   const [newMate, setNewMate] = useState('');
   const [data, setData] = useState<any[]>([]);
+  const [tableLoader, setTableLoader] = useState<boolean>(true);
 
   const yerbaRef = collection(firestore, 'yerba');
 
   const loadYerbas = async () => {
-    const q = query(yerbaRef);
-    getDocs(q).then((data) => {
-      if (data.docs.length < 1) {
-        return;
-      }
-      const mapped = data.docs.map((yerba) => {
-        return {
-          id: yerba.id,
-          ...yerba.data(),
-        };
-      });
+    const data = await getDocs(query(yerbaRef));
 
-      setData(mapped);
+    if (data.docs.length < 1) {
+      return;
+    }
+
+    const mapped = data.docs.map((yerba) => {
+      return {
+        id: yerba.id,
+        ...yerba.data(),
+      };
     });
+
+    setData(mapped);
   };
 
   useEffect(() => {
-    loadYerbas().then();
+    setTableLoader(true);
+    loadYerbas()
+        .then(() => {
+          setTableLoader(false);
+        }).catch((err) => {
+          // TODO: notification + stop loader
+        });
   }, []);
 
+  // TODO: it will be implemented on firebase side
   const onClickLike = (id: number) => {
     const mappedData = data.map((yerba) => {
       if (yerba.id === id) {
@@ -54,11 +62,14 @@ const YerbaTableComponent = () => {
 
   const handleAddYerbamate = async () => {
     if (newMate.length < 3) {
+      // TODO: send notification
       return;
     }
+    setTableLoader(true);
     await addDoc(yerbaRef, {name: newMate});
     await loadYerbas();
     setNewMate('');
+    setTableLoader(false);
   };
 
   return (
@@ -74,11 +85,13 @@ const YerbaTableComponent = () => {
           />
         </div>
         <div className={styles.button}>
-          <ButtonComponent text="Add yerba" onClick={handleAddYerbamate} />
+          <ButtonComponent
+            text="Add yerba"
+            onClick={handleAddYerbamate} />
         </div>
 
       </div>
-      <TableComponent>
+      <TableComponent showLoader={tableLoader}>
         <>
           <thead>
             <tr>
