@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import TableComponent from '../table-component/table.component';
+import TableComponent, {Table, TableRow}
+  from '../table-component/table.component';
 import InputComponent from '../inputs/input-component/input.component';
 import ButtonComponent from '../inputs/button-component/button.component';
 import styles from './yerba-table-component.module.scss';
@@ -40,26 +41,6 @@ const YerbaTableComponent = () => {
         });
   }, []);
 
-  // TODO: it will be implemented on firebase side
-  const onClickLike = (id: number) => {
-    const mappedData = data.map((yerba) => {
-      if (yerba.id === id) {
-        const newLikesQuantity = yerba.like ?
-          yerba.likesQuantity - 1 :
-          yerba.likesQuantity + 1;
-
-        return {
-          ...yerba,
-          like: !yerba.like,
-          likesQuantity: newLikesQuantity,
-        };
-      }
-      return yerba;
-    });
-
-    setData(mappedData);
-  };
-
   const handleAddYerbamate = async () => {
     if (newMate.length < 3) {
       // TODO: send notification
@@ -72,12 +53,31 @@ const YerbaTableComponent = () => {
     setTableLoader(false);
   };
 
+  const getMappedTableData = (): Table => {
+    const headers = ['Name'];
+
+    const mappedRows = data.map((val): TableRow => {
+      return {
+        cells: [{
+          id: val.id,
+          content: val.name,
+        }],
+        id: val.id,
+      };
+    });
+
+    return {
+      headers: headers,
+      rows: mappedRows,
+    };
+  };
+
   return (
     <div>
       <div className={styles['add-form']}>
         <div className={styles.input}>
           <InputComponent
-            placeholder="type yerba name"
+            placeholder="add new yerba mate"
             value={newMate}
             onChange={(val) => {
               setNewMate(val);
@@ -86,47 +86,14 @@ const YerbaTableComponent = () => {
         </div>
         <div className={styles.button}>
           <ButtonComponent
-            text="Add yerba"
+            text="Add"
             onClick={handleAddYerbamate} />
         </div>
 
       </div>
-      <TableComponent showLoader={tableLoader}>
-        <>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Like</th>
-              <th>Likes quantity</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {
-              data.map((yerba) => (
-                <tr key={yerba.id}>
-                  <td>{yerba.name}</td>
-                  <td
-                    className="clickable"
-                    onClick={
-                      () => onClickLike(yerba.id)
-                    }>
-                    <img
-                      style={{width: 20}}
-                      alt="heart icon to like"
-                      src={yerba.like ?
-                        '/components/like-on.svg' :
-                        '/components/like-off.svg'}
-                    />
-                  </td>
-                  <td>{yerba.likesQuantity}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-
-        </>
-      </TableComponent>
+      <TableComponent
+        table={getMappedTableData()}
+        showLoader={tableLoader}/>
     </div>
 
   );
