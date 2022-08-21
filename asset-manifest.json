@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.0a2d3ebd.css",
-    "main.js": "/static/js/main.96c2baba.js",
-    "static/js/787.697f781d.chunk.js": "/static/js/787.697f781d.chunk.js",
-    "index.html": "/index.html",
-    "main.0a2d3ebd.css.map": "/static/css/main.0a2d3ebd.css.map",
-    "main.96c2baba.js.map": "/static/js/main.96c2baba.js.map",
-    "787.697f781d.chunk.js.map": "/static/js/787.697f781d.chunk.js.map"
+    "main.css": "/yerba-mate-rating/static/css/main.0a2d3ebd.css",
+    "main.js": "/yerba-mate-rating/static/js/main.b09b0575.js",
+    "static/js/787.697f781d.chunk.js": "/yerba-mate-rating/static/js/787.697f781d.chunk.js",
+    "index.html": "/yerba-mate-rating/index.html",
+    "main.0a2d3ebd.css.map": "/yerba-mate-rating/static/css/main.0a2d3ebd.css.map",
+    "main.b09b0575.js.map": "/yerba-mate-rating/static/js/main.b09b0575.js.map",
+    "787.697f781d.chunk.js.map": "/yerba-mate-rating/static/js/787.697f781d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0a2d3ebd.css",
-    "static/js/main.96c2baba.js"
+    "static/js/main.b09b0575.js"
   ]
 }
