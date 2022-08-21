@@ -50,7 +50,7 @@ const TableComponent = ({showLoader, table}: Props) => {
       return;
     }
     setSortedRows([]);
-  }, [sortings]);
+  }, [sortings, table.rows]);
 
   const sortByHeader = (a: TableRow, b: TableRow) => {
     let aPoints = 0;
