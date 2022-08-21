@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import TableComponent, {Table, TableRow}
+import TableComponent
   from '../table-component/table.component';
 import InputComponent from '../inputs/input-component/input.component';
 import ButtonComponent from '../inputs/button-component/button.component';
 import styles from './yerba-table-component.module.scss';
 import firestore from '../../firebase/firebase';
 import {collection, addDoc, getDocs, query} from '@firebase/firestore';
+import {Table, TableRow} from '../table-component/types/table.types';
+
+const YERBA_TABLE_HEADERS = ['Name'];
 
 const YerbaTableComponent = () => {
   const [newMate, setNewMate] = useState('');
@@ -54,20 +57,20 @@ const YerbaTableComponent = () => {
   };
 
   const getMappedTableData = (): Table => {
-    const headers = ['Name'];
-
-    const mappedRows = data.map((val): TableRow => {
+    const mappedRows = data.map((val, index): TableRow => {
       return {
-        cells: [{
-          id: val.id,
-          content: val.name,
-        }],
+        cells: [
+          {
+            id: val.id,
+            content: val.name,
+          },
+        ],
         id: val.id,
       };
     });
 
     return {
-      headers: headers,
+      headers: YERBA_TABLE_HEADERS,
       rows: mappedRows,
     };
   };

@@ -6,7 +6,7 @@ Project will be simple but useful yerbamate rating listing.
 - Listing yerbamate `[DONE]`
 - Add yerbamate `[DONE]`
 - Like / dislike db structure `[TODO]`
-- Sort by headers `[TODO]`
+- Sort by headers `[DONE]`
 - Filter `[TODO]`
 - Pagination `[TODO][OPTIONAL]`
 - Implement firebase to store yerbamate `[DONE]`
