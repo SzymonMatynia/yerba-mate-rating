@@ -8,7 +8,7 @@ import firestore from '../../firebase/firebase';
 import {collection, addDoc, getDocs, query} from '@firebase/firestore';
 import {Table, TableRow} from '../table-component/types/table.types';
 
-const YERBA_TABLE_HEADERS = ['Name'];
+const YERBA_TABLE_HEADERS = ['Name', 'Quantity'];
 
 const YerbaTableComponent = () => {
   const [newMate, setNewMate] = useState('');

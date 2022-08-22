@@ -67,12 +67,15 @@ const TableComponent = ({showLoader, table}: Props) => {
       const aCellContent = aCells[i]?.content;
       const bCellContent = bCells[i]?.content;
 
-      if (sorting.state === TABLE_SORT_OFF || !aCellContent || !bCellContent) {
+      if (sorting.state === TABLE_SORT_OFF) {
         continue;
       }
 
+      // TODO: refactor these ts-ignores
+      // @ts-ignore
       if (aCellContent > bCellContent) {
         sorting.state === TABLE_SORT_DESC ? aPoints++ : bPoints++;
+      // @ts-ignore
       } else if (aCellContent < bCellContent) {
         sorting.state === TABLE_SORT_DESC ? bPoints++ : aPoints++;
       }
