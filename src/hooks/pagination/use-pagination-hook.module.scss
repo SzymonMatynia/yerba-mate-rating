@@ -5,6 +5,10 @@
   list-style: none;
   gap: 1rem;
 
+  &__arrow {
+    cursor: pointer;
+  }
+
   &__page {
     width: 3rem;
     height: 3rem;
@@ -15,6 +19,7 @@
     transition: all 0.2s ease;
 
     &:hover {
+      cursor: pointer;
       width: 3rem;
       height: 3rem;
       display: flex;

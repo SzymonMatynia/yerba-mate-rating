@@ -5,6 +5,7 @@ import styles from './use-pagination-hook.module.scss';
 interface Props {
   limit: number;
   totalItems: number;
+  onPageChange?: (offset: number) => void;
 }
 
 interface UsePagination {
@@ -22,7 +23,11 @@ const usePagination = (props: Props): UsePagination => {
   }, [offset, props.limit, props.totalItems]);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
-    setOffset((selectedItem.selected * props.limit) % props.totalItems);
+    const newOffset = (selectedItem.selected * props.limit) % props.totalItems;
+    setOffset(newOffset);
+    if (props.onPageChange) {
+      props.onPageChange(newOffset);
+    }
   };
 
   const pagination = (
@@ -37,6 +42,8 @@ const usePagination = (props: Props): UsePagination => {
       pageLinkClassName={styles['pagination__page']}
       activeLinkClassName={styles['pagination__active']}
       breakClassName={styles['pagination__break']}
+      nextClassName={styles['pagination__arrow']}
+      previousClassName={styles['pagination__arrow']}
     />
   );
 

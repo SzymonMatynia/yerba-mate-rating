@@ -7,6 +7,7 @@ import styles from './yerba-table-component.module.scss';
 import firestore from '../../firebase/firebase';
 import {collection, addDoc, getDocs, query} from '@firebase/firestore';
 import {Table, TableRow} from '../table-component/types/table.types';
+import notifier from '../../plugins/awesome-notifications.plugin';
 
 const YERBA_TABLE_HEADERS = ['Name', 'Quantity'];
 
@@ -41,19 +42,23 @@ const YerbaTableComponent = () => {
           setTableLoader(false);
         }).catch((err) => {
           setTableLoader(false);
-          // TODO: notification
+          notifier.alert(err.message);
         });
   }, []);
 
   const handleAddYerbamate = async () => {
     if (newMate.length < 3) {
-      // TODO: send notification
+      notifier.alert('name must be at least 3 letters.');
       return;
     }
     setTableLoader(true);
-    await addDoc(yerbaRef, {name: newMate});
-    await loadYerbas();
-    setNewMate('');
+    try {
+      await addDoc(yerbaRef, {name: newMate});
+      await loadYerbas();
+      setNewMate('');
+    } catch (err: any) {
+      notifier.alert(err.message);
+    }
     setTableLoader(false);
   };
 

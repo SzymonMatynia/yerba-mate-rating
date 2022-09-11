@@ -14,11 +14,18 @@ import {
 import usePagination from '../../hooks/pagination/use-pagination.hook';
 
 interface Props {
-  showLoader?: boolean
-  table: Table
+  showLoader?: boolean;
+  table: Table;
+  perPageLimit?: number;
+  onPageChange?: (offset: number) => void;
 }
 
-const TableComponent = ({showLoader, table}: Props) => {
+const TableComponent = ({
+  showLoader,
+  table,
+  onPageChange,
+  perPageLimit = 25,
+}: Props) => {
   const [sortings, setSortings] = useState<Sorting[]>([]);
   const [sortedRows, setSortedRows] = useState<TableRow[]>([]);
 
@@ -137,9 +144,10 @@ const TableComponent = ({showLoader, table}: Props) => {
   };
 
 
-  const {limit, pagination, offset} = usePagination({
-    limit: 10,
-    totalItems: 99,
+  const {pagination} = usePagination({
+    limit: perPageLimit,
+    totalItems: table.rows.length,
+    onPageChange: onPageChange,
   });
 
   return (
@@ -172,9 +180,7 @@ const TableComponent = ({showLoader, table}: Props) => {
         <LoaderComponent/>
       </div>}
 
-      {limit}
-      {offset}
-      {pagination}
+      {table.rows.length > 0 && pagination}
     </div>
   );
 };
