@@ -11,6 +11,7 @@ import {
   TABLE_SORT_ASC,
   TABLE_SORT_DESC,
   TABLE_SORT_OFF} from './const/table.const';
+import usePagination from '../../hooks/pagination/use-pagination.hook';
 
 interface Props {
   showLoader?: boolean
@@ -135,6 +136,12 @@ const TableComponent = ({showLoader, table}: Props) => {
     );
   };
 
+
+  const {limit, pagination, offset} = usePagination({
+    limit: 10,
+    totalItems: 99,
+  });
+
   return (
     <div className={styles['table-component-wrapper']}>
       <table className={styles['table-component']}>
@@ -164,6 +171,10 @@ const TableComponent = ({showLoader, table}: Props) => {
       {showLoader && <div className={styles['loader-container']}>
         <LoaderComponent/>
       </div>}
+
+      {limit}
+      {offset}
+      {pagination}
     </div>
   );
 };

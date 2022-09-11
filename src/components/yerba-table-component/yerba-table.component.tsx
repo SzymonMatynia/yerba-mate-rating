@@ -40,7 +40,8 @@ const YerbaTableComponent = () => {
         .then(() => {
           setTableLoader(false);
         }).catch((err) => {
-          // TODO: notification + stop loader
+          setTableLoader(false);
+          // TODO: notification
         });
   }, []);
 
