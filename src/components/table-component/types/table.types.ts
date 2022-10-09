@@ -6,8 +6,7 @@ export interface TableRow {
 }
 
 export interface CellData {
-  id: string | number;
-  content: string | number | React.ReactNode;
+  content: string | number | React.ReactElement;
 }
 
 export interface Table {

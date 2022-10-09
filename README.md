@@ -1,21 +1,15 @@
 # Yerba Mate Rating
 
-Project will be simple but useful yerbamate rating listing.
+Project is a simple but useful TableComponent that could be reuse across project. It allows to sort data by every header ASC or DESC or OFF.
 
 ##### Features:
-- Listing yerbamate `[DONE]`
-- Add yerbamate `[DONE]`
-- Like / dislike db structure `[TODO]`
-- Sort by headers `[DONE]`
-- Filter `[TODO]`
-- Pagination `[TODO][OPTIONAL]`
-- Implement firebase to store yerbamate `[DONE]`
-- Implement notifications `[TODO]`
+- Listing yerbamate
+- Add yerbamate
+- Sort by headers
 
 Tech stack:
 - React.js with TypeScript
 - Google Linting
-- Firebase as DB
 
 Tests stack:
 - Cypress
