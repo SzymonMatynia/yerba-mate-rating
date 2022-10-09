@@ -30,7 +30,7 @@ const usePagination = (props: Props): UsePagination => {
     }
   };
 
-  const pagination = (
+  const pagination = props.totalItems > props.limit ? (
     <ReactPaginate
       breakLabel='...'
       previousLabel={'<'}
@@ -45,7 +45,7 @@ const usePagination = (props: Props): UsePagination => {
       nextClassName={styles['pagination__arrow']}
       previousClassName={styles['pagination__arrow']}
     />
-  );
+  ) : null;
 
   return {limit: props.limit, offset: offset, pagination};
 };
