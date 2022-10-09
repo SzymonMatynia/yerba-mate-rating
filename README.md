@@ -2,6 +2,8 @@
 
 Project is a simple but useful TableComponent that could be reuse across project. It allows to sort data by every header ASC or DESC or OFF.
 
+Demo: [https://eterxoz.github.io/yerba-mate-rating/](https://eterxoz.github.io/yerba-mate-rating/)
+
 ##### Features:
 - Listing yerbamate
 - Add yerbamate
@@ -17,8 +19,7 @@ Tests stack:
 
 # Installation
 1. install dependencies `yarn` or `npm install`
-2. create `.env` file of `.env.example`
-3. to start the app use `yarn start` or `npm run start`
+2. to start the app use `yarn start` or `npm run start`
 
 # Getting Started with Create React App
 
