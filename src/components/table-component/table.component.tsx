@@ -60,10 +60,10 @@ const TableComponent = ({showLoader, table}: Props) => {
     const bCells = b.cells;
 
     const aCellsLength = aCells.length;
-    // const bCellsLength = bCells.length;
 
     for (let i = 0; i < aCellsLength; i++) {
       const sorting = getSortingByIndex(i);
+      // TODO: sorting should take care of react elements
       const aCellContent = aCells[i]?.content;
       const bCellContent = bCells[i]?.content;
 
@@ -114,6 +114,14 @@ const TableComponent = ({showLoader, table}: Props) => {
     }
   };
 
+  const getKeyForCell = (cellValue: string | number | React.ReactElement) => {
+    if (React.isValidElement(cellValue)) {
+      return cellValue.props.children;
+    }
+
+    return cellValue;
+  };
+
   const renderTableBody = (rows: TableRow[]) => {
     return (
       <tbody>
@@ -122,8 +130,9 @@ const TableComponent = ({showLoader, table}: Props) => {
             <tr key={row.id}>
               {
                 row.cells.map((cell) => {
+                  console.log(cell.content);
                   return (
-                    <td key={cell.id}>{cell.content}</td>
+                    <td key={getKeyForCell(cell.content)}>{cell.content}</td>
                   );
                 })
               }

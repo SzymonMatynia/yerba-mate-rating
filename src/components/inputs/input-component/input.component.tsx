@@ -6,6 +6,8 @@ interface Props {
   value: string;
   placeholder: string;
   onChange: (value: string) => void;
+  label?: string
+  type: 'text' | 'number';
 }
 
 const InputComponent = (props: Props) => {
@@ -14,12 +16,21 @@ const InputComponent = (props: Props) => {
   };
 
   return (
-    <input
-      placeholder={props.placeholder}
-      className={styles.input}
-      value={props.value}
-      onChange={handleOnChange}
-    />
+    <div className={styles['input-container']}>
+      {
+        props?.label ?
+          <label className={styles['label']}>{props.label}</label> :
+          null
+      }
+      <input
+        placeholder={props.placeholder}
+        className={styles.input}
+        value={props.value}
+        onChange={handleOnChange}
+        type={props.type}
+      />
+    </div>
+
   );
 };
 

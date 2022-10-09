@@ -1,8 +1,7 @@
-interface YerbaData {
+interface YerbaDataInterface {
   id: number;
   name: string;
-  like: boolean;
-  likesQuantity: number;
+  price: number;
 }
 
-export default YerbaData;
+export default YerbaDataInterface;

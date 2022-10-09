@@ -1,7 +1,19 @@
 .add-form {
   display: flex;
-  align-items: center;
+  align-items: end;
   margin-bottom: 15px;
+
+  .input-group {
+    display: flex;
+
+    .input {
+      margin-left: 15px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
 
   .input {
     border-radius: 1px;

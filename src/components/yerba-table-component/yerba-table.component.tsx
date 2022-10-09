@@ -1,68 +1,52 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import TableComponent
   from '../table-component/table.component';
 import InputComponent from '../inputs/input-component/input.component';
 import ButtonComponent from '../inputs/button-component/button.component';
 import styles from './yerba-table-component.module.scss';
-import firestore from '../../firebase/firebase';
-import {collection, addDoc, getDocs, query} from '@firebase/firestore';
 import {Table, TableRow} from '../table-component/types/table.types';
-
-const YERBA_TABLE_HEADERS = ['Name', 'Quantity'];
+import YerbaDataInterface from '../../types/yerba-data.interface';
+import YERBA_TABLE_HEADERS from './const/yerba-table-headers.const';
+import yerbaData from '../../data/yerba-data';
 
 const YerbaTableComponent = () => {
-  const [newMate, setNewMate] = useState('');
-  const [data, setData] = useState<any[]>([]);
-  const [tableLoader, setTableLoader] = useState<boolean>(true);
+  const [nameInput, setNameInput] = useState<string>('');
+  const [priceInput, setPriceInput] = useState<string>('');
+  const [data, setData] = useState<YerbaDataInterface[]>(yerbaData);
+  const [tableLoader, setTableLoader] = useState<boolean>(false);
 
-  const yerbaRef = collection(firestore, 'yerba');
-
-  const loadYerbas = async () => {
-    const data = await getDocs(query(yerbaRef));
-
-    if (data.docs.length < 1) {
-      return;
-    }
-
-    const mapped = data.docs.map((yerba) => {
-      return {
-        id: yerba.id,
-        ...yerba.data(),
-      };
-    });
-
-    setData(mapped);
-  };
-
-  useEffect(() => {
-    setTableLoader(true);
-    loadYerbas()
-        .then(() => {
-          setTableLoader(false);
-        }).catch((err) => {
-          // TODO: notification + stop loader
-        });
-  }, []);
-
-  const handleAddYerbamate = async () => {
-    if (newMate.length < 3) {
+  const handleAddData = async () => {
+    if (nameInput.length < 3) {
       // TODO: send notification
       return;
     }
+
+    if (!priceInput || !/^\d+(\.\d{1,2})?$/.test(priceInput)) {
+      return;
+    }
+
+    const newYerbaObject: YerbaDataInterface = {
+      id: data.length + 1,
+      name: nameInput,
+      price: Number(priceInput),
+    };
+
     setTableLoader(true);
-    await addDoc(yerbaRef, {name: newMate});
-    await loadYerbas();
-    setNewMate('');
+    setData([...data, newYerbaObject]);
     setTableLoader(false);
+    setNameInput('');
+    setPriceInput('');
   };
 
   const getMappedTableData = (): Table => {
-    const mappedRows = data.map((val, index): TableRow => {
+    const mappedRows = data.map((val): TableRow => {
       return {
         cells: [
           {
-            id: val.id,
             content: val.name,
+          },
+          {
+            content: val.price,
           },
         ],
         id: val.id,
@@ -78,19 +62,34 @@ const YerbaTableComponent = () => {
   return (
     <div>
       <div className={styles['add-form']}>
-        <div className={styles.input}>
-          <InputComponent
-            placeholder="add new yerba mate"
-            value={newMate}
-            onChange={(val) => {
-              setNewMate(val);
-            }}
-          />
+        <div className={styles['input-group']}>
+          <div className={styles.input}>
+            <InputComponent
+              label={'Yerbamate name'}
+              type={'text'}
+              placeholder="Yerbamate name"
+              value={nameInput}
+              onChange={(val) => {
+                setNameInput(val);
+              }}
+            />
+          </div>
+          <div className={styles.input}>
+            <InputComponent
+              label={'Yerbamate price/kg'}
+              type={'text'}
+              placeholder="E.g. 10.99"
+              value={priceInput.toString()}
+              onChange={(val) => {
+                setPriceInput(val.replace(/[^\d.]/g, ''));
+              }}
+            />
+          </div>
         </div>
         <div className={styles.button}>
           <ButtonComponent
             text="Add"
-            onClick={handleAddYerbamate} />
+            onClick={handleAddData} />
         </div>
 
       </div>
