@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yerba-mate-rating/static/css/main.25ed7008.css",
-    "main.js": "/yerba-mate-rating/static/js/main.5a3b6101.js",
+    "main.css": "/yerba-mate-rating/static/css/main.0928f65d.css",
+    "main.js": "/yerba-mate-rating/static/js/main.3989f5a4.js",
     "static/js/787.697f781d.chunk.js": "/yerba-mate-rating/static/js/787.697f781d.chunk.js",
     "index.html": "/yerba-mate-rating/index.html",
-    "main.25ed7008.css.map": "/yerba-mate-rating/static/css/main.25ed7008.css.map",
-    "main.5a3b6101.js.map": "/yerba-mate-rating/static/js/main.5a3b6101.js.map",
+    "main.0928f65d.css.map": "/yerba-mate-rating/static/css/main.0928f65d.css.map",
+    "main.3989f5a4.js.map": "/yerba-mate-rating/static/js/main.3989f5a4.js.map",
     "787.697f781d.chunk.js.map": "/yerba-mate-rating/static/js/787.697f781d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.25ed7008.css",
-    "static/js/main.5a3b6101.js"
+    "static/css/main.0928f65d.css",
+    "static/js/main.3989f5a4.js"
   ]
 }
