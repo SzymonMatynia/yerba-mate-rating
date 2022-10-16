@@ -6,15 +6,8 @@
   padding: 15px 10px;
   border: 1px solid rgba(0,0,0,0.1);
   outline: none;
-
-  background: #009879;
-
-  transition: 0.3s all;
-  border-radius: 3px;
-
-  &:hover {
-    background: rgba(0, 152, 121, 0.95);
-  }
+  background: linear-gradient(90deg, rgba(0,152,121,1) 0%, rgba(0,152,148,1) 100%);
+  box-shadow: 0 0 20px rgba(1, 1, 0, 0.3);
 
   .text {
     color: white;

@@ -1,5 +1,7 @@
 .table-component-wrapper {
   position: relative;
+  overflow-x: auto;
+  box-shadow: 0 0 20px rgba(1, 1, 0, 0.3);
 
   .table-component {
     margin: 0;
@@ -8,18 +10,19 @@
     border-collapse: collapse;
     font-size: 0.9em;
     font-family: sans-serif;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    background: white;
     table-layout: fixed;
+    background: rgb(0,152,121);
+    background: linear-gradient(90deg, rgba(0,152,121,1) 0%, rgba(0,152,148,1) 100%);
+    color: white;
+    min-width: 600px;
 
     tr {
       width: 100%;
-
-      border-bottom: 1px solid #dddddd;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: linear 0.2s ;
 
       th, td {
-        padding: 12px 15px;
-
+        padding: 20px;
       }
 
       td {
@@ -29,18 +32,15 @@
       th {
         font-weight: bold;
         text-align: left;
-        background-color: #009879;
+        //background: rgba(255,255,255,0.3);
         color: #ffffff;
         position: relative;
+        border-bottom: 1px solid white;
       }
 
       &:hover {
-        background: #fafafa;
+        background: rgba(255,255,255,0.1);
 
-        td {
-          color: #009879;
-          transition: linear 0.3s
-        }
       }
 
       .sortable {
@@ -84,14 +84,6 @@
 
       }
 
-    }
-
-    &:nth-of-type(even) {
-      background-color: #f3f3f3;
-    }
-
-    &:last-of-type {
-      border-bottom: 2px solid #009879;
     }
 
     .clickable {

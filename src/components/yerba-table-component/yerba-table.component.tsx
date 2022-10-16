@@ -8,6 +8,7 @@ import {Table, TableRow} from '../table-component/types/table.types';
 import YerbaDataInterface from '../../types/yerba-data.interface';
 import YERBA_TABLE_HEADERS from './const/yerba-table-headers.const';
 import yerbaData from '../../data/yerba-data';
+import notifier from '../../plugins/awn.plugin';
 
 const YerbaTableComponent = () => {
   const [nameInput, setNameInput] = useState<string>('');
@@ -17,11 +18,12 @@ const YerbaTableComponent = () => {
 
   const handleAddData = async () => {
     if (nameInput.length < 3) {
-      // TODO: send notification
+      notifier.alert('Name must have at least 3 characters');
       return;
     }
 
     if (!priceInput || !/^\d+(\.\d{1,2})?$/.test(priceInput)) {
+      notifier.alert('Price format is: 33.33');
       return;
     }
 
