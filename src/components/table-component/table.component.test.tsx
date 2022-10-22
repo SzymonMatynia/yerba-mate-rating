@@ -56,7 +56,6 @@ describe('TableComponent', () => {
 
       const th = screen.getByText(new RegExp(tdContent.toString(), 'i'));
       expect(th.nodeName).toBe('TD');
-      expect(th.textContent).toBe(tdContent.toString());
     }
   });
 
