@@ -130,7 +130,6 @@ const TableComponent = ({showLoader, table}: Props) => {
             <tr key={row.id}>
               {
                 row.cells.map((cell) => {
-                  console.log(cell.content);
                   return (
                     <td key={getKeyForCell(cell.content)}>{cell.content}</td>
                   );
