@@ -2,7 +2,7 @@
 
 Project is a simple but useful TableComponent that could be reuse across project. It allows to sort data by every header ASC or DESC or OFF.
 
-Demo: [https://eterxoz.github.io/yerba-mate-rating/](https://eterxoz.github.io/yerba-mate-rating/)
+Demo: [[https://eterxoz.github.io/yerba-mate-rating/](https://eterxoz.github.io/yerba-mate-rating/)](https://szymonmatynia.github.io/yerba-mate-rating/)
 
 ##### Features:
 - Listing yerbamate
